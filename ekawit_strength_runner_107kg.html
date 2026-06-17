@@ -1,0 +1,227 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{padding:1rem 0;font-family:var(--font-sans)}
+h2{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem}
+.tabs{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.on{background:#0F6E56;color:#9FE1CB;border-color:#0F6E56}
+.phase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:1.5rem}
+.ph{padding:12px;border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.ph.active{border:2px solid #1D9E75;background:#E1F5EE}
+.ph-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;color:var(--color-text-secondary)}
+.ph.active .ph-label{color:#0F6E56}
+.ph-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.ph-weeks{font-size:11px;color:var(--color-text-secondary)}
+.sec{margin-bottom:1.5rem}
+.sec-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:#1D9E75;display:inline-block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px;margin-bottom:8px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.card-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.bg{background:#E1F5EE;color:#0F6E56}
+.bb{background:#E6F1FB;color:#185FA5}
+.ba{background:#FAEEDA;color:#854F0B}
+.bp{background:#FBEAF0;color:#993556}
+.card-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.ex-row{display:grid;grid-template-columns:20px 1fr auto auto;gap:8px;align-items:center;padding:9px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);margin-bottom:6px}
+.num{width:20px;height:20px;border-radius:50%;background:#E1F5EE;color:#0F6E56;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center}
+.ex-name{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.ex-note{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.sets{font-size:12px;color:var(--color-text-secondary);white-space:nowrap}
+.tip-box{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px}
+.tip{display:flex;gap:8px;font-size:12px;color:var(--color-text-secondary);padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.5}
+.tip:last-child{border:none}
+.ti{color:#1D9E75;font-size:13px;flex-shrink:0}
+.quote{background:#E6F1FB;border-left:3px solid #185FA5;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 12px;margin-bottom:8px}
+.quote p{font-size:12px;color:#185FA5;font-style:italic;line-height:1.6}
+.quote span{font-size:11px;color:#185FA5;opacity:.7}
+.week-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:1rem}
+.wday{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 4px;text-align:center}
+.wday.on{border:2px solid #1D9E75;background:#E1F5EE}
+.wday.rest{background:var(--color-background-secondary)}
+.dn{font-size:10px;color:var(--color-text-secondary);margin-bottom:3px}
+.dt{font-size:11px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.dd{font-size:10px;color:var(--color-text-secondary);margin-top:2px}
+</style>
+
+<div class="w">
+  <h2>ตารางฝึก Strength Training สำหรับนักวิ่ง</h2>
+  <p class="sub">ตามแนวทาง อ.เอกวิทย์ แสวงผล — Runners Journey EP2 | น้ำหนัก 107 กก. อายุ 40 ปี</p>
+
+  <div class="tabs">
+    <button class="tab on" onclick="show('phase')">3 ช่วงการฝึก</button>
+    <button class="tab" onclick="show('base')">ช่วง Base</button>
+    <button class="tab" onclick="show('specific')">ช่วง Specific</button>
+    <button class="tab" onclick="show('muscles')">กล้ามเนื้อหลัก</button>
+    <button class="tab" onclick="show('tips')">หลักสำคัญ</button>
+  </div>
+
+  <div id="phase">
+    <div class="phase-grid">
+      <div class="ph active">
+        <div class="ph-label">ช่วงที่ 1</div>
+        <div class="ph-name">Base / General</div>
+        <div class="ph-weeks">สัปดาห์ 1–4</div>
+      </div>
+      <div class="ph">
+        <div class="ph-label">ช่วงที่ 2</div>
+        <div class="ph-name">Specific</div>
+        <div class="ph-weeks">สัปดาห์ 5–10</div>
+      </div>
+      <div class="ph">
+        <div class="ph-label">ช่วงที่ 3</div>
+        <div class="ph-name">Taper / Race</div>
+        <div class="ph-weeks">สัปดาห์ 11–12</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-title"><span class="dot"></span>แนวคิดหลักจาก อ.เอกวิทย์</div>
+      <div class="quote"><p>"ตารางวิ่งกับ Strength ต้องวาง matching กัน — ไม่ใช่คนละเรื่อง มันเป็นเรื่องเดียวกัน"</p><span>— อ.เอกวิทย์ แสวงผล</span></div>
+      <div class="quote"><p>"ช่วงเบสคือโอกาสทองของการทำ Strength Endurance, Core Strength, Joint Stability"</p><span>— อ.เอกวิทย์ แสวงผล</span></div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">หลักการ Periodization</span><span class="badge bb">วางแผนถอยหลัง</span></div>
+        <div class="card-desc">เริ่มจากวันแข่งขัน → ย้อนมา 2–3 สัปดาห์ Taper → ช่วง Competition/Specific → ช่วง Base จนถึงวันเริ่มซ้อม อ.เอกวิทย์เน้นว่าต้องรู้วันแข่งก่อนจึงจะวางแผนได้ถูก</div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Circuit Training คืออะไร?</span><span class="badge bg">เบส</span></div>
+        <div class="card-desc">ฐาน 9–12 ฐาน ทำต่อเนื่องไม่หยุด ได้ทั้ง Aerobic Endurance + Strength พร้อมกัน หัวใจอยู่ที่ 130+ bpm ต่อเนื่อง 30 นาที = เทียบเท่าวิ่ง สำหรับคนทั่วไปแทนการจ๊อกได้เลย!</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="base" style="display:none">
+    <div class="quote"><p>"Circuit ใช้ Bodyweight ก็ได้ แต่ถ้ากล้ามเนื้อเข้าถึงยากเช่นก้น ก็ใช้เวทช่วย — สำคัญที่สุดคือฟอร์มถูกก่อน แล้วค่อยเติมน้ำหนัก"</p><span>— อ.เอกวิทย์</span></div>
+
+    <div class="week-row">
+      <div class="wday on"><div class="dn">จ.</div><div class="dt">Circuit ทั้งตัว</div><div class="dd">40 นาที</div></div>
+      <div class="wday"><div class="dn">อ.</div><div class="dt">วิ่ง Zone 2</div><div class="dd">30 นาที</div></div>
+      <div class="wday on"><div class="dn">พ.</div><div class="dt">Circuit ทั้งตัว</div><div class="dd">40 นาที</div></div>
+      <div class="wday rest"><div class="dn">พฤ.</div><div class="dt">พัก/ยืด</div><div class="dd">15 นาที</div></div>
+      <div class="wday on"><div class="dn">ศ.</div><div class="dt">Core + Tendon</div><div class="dd">30 นาที</div></div>
+      <div class="wday"><div class="dn">ส.</div><div class="dt">วิ่ง Zone 2-3</div><div class="dd">45 นาที</div></div>
+      <div class="wday rest"><div class="dn">อา.</div><div class="dt">พักเต็ม</div><div class="dd">—</div></div>
+    </div>
+
+    <div class="sec-title" style="margin-bottom:10px"><span class="dot"></span>Circuit ช่วง Base — 9 ฐาน (ทำต่อเนื่อง)</div>
+
+    <div class="ex-row"><div class="num">1</div><div><div class="ex-name">Squat → Jump Squat</div><div class="ex-note">เริ่มที่ Squat ธรรมดา พอกล้ามเนื้อปรับตัวแล้วค่อยเป็น Jump Squat</div></div><span class="badge bg">ข้อเข่า+สะโพก</span><span class="sets">15 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">2</div><div><div class="ex-name">Romanian Deadlift</div><div class="ex-note">เน้นแฮมสตริง + กล้ามเนื้อก้น ฟอร์มถูกก่อนเติมน้ำหนัก</div></div><span class="badge bg">ก้น+แฮมส</span><span class="sets">12 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">3</div><div><div class="ex-name">Calf Raise (ยืนเขย่งค้าง)</div><div class="ex-note">เขย่งค้างไว้ที่ตำแหน่ง Achilles ทำงาน → เสริมความหนาเอ็น</div></div><span class="badge ba">เอ็นร้อยหวาย</span><span class="sets">20 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">4</div><div><div class="ex-name">Nordic Hamstring (Eccentric)</div><div class="ex-note">นั่งคุกเขาโล้ตัวลงช้าๆ ใช้ยางยืดช่วยซัพพอร์ตก่อนถ้ายังไม่แข็งพอ</div></div><span class="badge bg">แฮมสตริง</span><span class="sets">8 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">5</div><div><div class="ex-name">Hip Flexor Raise</div><div class="ex-note">ฝึกกล้ามเนื้อยกเข่า — สำคัญมากสำหรับนักวิ่ง</div></div><span class="badge bg">สะโพกด้านหน้า</span><span class="sets">12 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">6</div><div><div class="ex-name">Lateral Band Walk</div><div class="ex-note">กล้ามเนื้อด้านข้างสะโพก — Stability ป้องกันเข่าพัง</div></div><span class="badge bb">Stability</span><span class="sets">15 ก้าว/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">7</div><div><div class="ex-name">Dead Bug</div><div class="ex-note">Coordination + Core — ฝึกประสาทสั่งการหลายกลุ่มพร้อมกัน</div></div><span class="badge bp">Core/Neuro</span><span class="sets">10 ครั้ง</span></div>
+
+    <div class="ex-row"><div class="num">8</div><div><div class="ex-name">Bird Dog</div><div class="ex-note">Coordination การทำงานร่วมกันของกล้ามเนื้อหลายมัด</div></div><span class="badge bp">Core/Neuro</span><span class="sets">10 ครั้ง/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">9</div><div><div class="ex-name">Shoulder Swing + Squat (Dumbbell)</div><div class="ex-note">ท่า Compound สำหรับนักวิ่ง — แกว่งแขนพร้อม Squat จำลองการวิ่ง</div></div><span class="badge bb">Compound</span><span class="sets">12 ครั้ง</span></div>
+
+    <div class="card" style="margin-top:12px;background:#E1F5EE">
+      <div class="card-title" style="color:#0F6E56;margin-bottom:4px">สัปดาห์ 1–2: 2 รอบ Circuit | สัปดาห์ 3–4: 3 รอบ Circuit</div>
+      <div class="card-desc" style="color:#0F6E56">ดอม 3 สัปดาห์แรกเป็นเรื่องปกติ — อ.เอกวิทย์บอกว่า "ถ้ากลัวดอม ยกเวทไม่ได้" มันคือ Good Sign ของการพัฒนา</div>
+    </div>
+  </div>
+
+  <div id="specific" style="display:none">
+    <div class="quote"><p>"ช่วง Specific — เพิ่มน้ำหนัก, ใช้ขาเดียว (Single Leg), เริ่ม Plyometric ถ้าแข็งแรงพอ หรือใช้วิ่งขึ้น-ลงเนิน 7% แทน"</p><span>— อ.เอกวิทย์</span></div>
+
+    <div class="week-row">
+      <div class="wday on"><div class="dn">จ.</div><div class="dt">Single Leg Strength</div><div class="dd">40 นาที</div></div>
+      <div class="wday"><div class="dn">อ.</div><div class="dt">วิ่ง Tempo</div><div class="dd">35 นาที</div></div>
+      <div class="wday on"><div class="dn">พ.</div><div class="dt">Hill Run + Plyometric</div><div class="dd">45 นาที</div></div>
+      <div class="wday rest"><div class="dn">พฤ.</div><div class="dt">พัก/Core</div><div class="dd">20 นาที</div></div>
+      <div class="wday on"><div class="dn">ศ.</div><div class="dt">Power Endurance</div><div class="dd">35 นาที</div></div>
+      <div class="wday"><div class="dn">ส.</div><div class="dt">Long Run</div><div class="dd">60+ นาที</div></div>
+      <div class="wday rest"><div class="dn">อา.</div><div class="dt">พักเต็ม</div><div class="dd">—</div></div>
+    </div>
+
+    <div class="sec-title" style="margin-bottom:10px"><span class="dot"></span>ท่า Specific — กล้ามเนื้อเฉพาะนักวิ่ง</div>
+
+    <div class="ex-row"><div class="num">1</div><div><div class="ex-name">Single Leg Deadlift</div><div class="ex-note">ขาเดียว — จำลองการวิ่ง ชาวิ่งใช้ขาสลับกัน ไม่ใช่ 2 ขาพร้อมกัน</div></div><span class="badge bg">SL Control</span><span class="sets">3×10/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">2</div><div><div class="ex-name">Split Squat / Bulgarian</div><div class="ex-note">ก้น + Quad + แฮมส ท่า Compound เฉพาะนักวิ่ง</div></div><span class="badge bg">SL Control</span><span class="sets">3×10/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">3</div><div><div class="ex-name">Explosive Step-Up + กระโดด</div><div class="ex-note">ก้าวขึ้นแล้วกระโดดสลับ — กล้ามเนื้อทำงานเป็นชุด Intermuscular Coordination</div></div><span class="badge ba">Power</span><span class="sets">3×8/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">4</div><div><div class="ex-name">วิ่งขึ้น-ลงเนิน ≤7%</div><div class="ex-note">ขึ้น = Concentric | ลง = Eccentric — ได้ทั้ง 2 รูปแบบ แทน Plyometric สำหรับคนยังไม่แข็งพอ</div></div><span class="badge bb">Hill Run</span><span class="sets">6–10 รอบ</span></div>
+
+    <div class="ex-row"><div class="num">5</div><div><div class="ex-name">Resistance Band Knee Drive</div><div class="ex-note">ใช้ยางยืดกระตุกเข่าขึ้น — Specific มากสุด จำลองท่าวิ่งจริง</div></div><span class="badge bg">Hip Flexor</span><span class="sets">3×15/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">6</div><div><div class="ex-name">Resistance Band Hip Extension</div><div class="ex-note">ใช้ยางยืดถีบไปข้างหลัง — ก้นและแฮมส ในท่าวิ่ง</div></div><span class="badge bg">ก้น/แฮมส</span><span class="sets">3×15/ข้าง</span></div>
+
+    <div class="ex-row"><div class="num">7</div><div><div class="ex-name">Isometric Calf Hold + Eccentric</div><div class="ex-note">เขย่งค้างแล้วลดส้นเท้าลงช้าๆ 70–80% BW — เสริมเอ็นร้อยหวายแบบลึก</div></div><span class="badge ba">Tendon</span><span class="sets">3×10 ช้า</span></div>
+
+    <div class="card" style="margin-top:12px;background:#FAEEDA">
+      <div class="card-title" style="color:#854F0B;margin-bottom:4px">ช่วง Taper (2–3 สัปดาห์ก่อนแข่ง): ลดเซตลง 5→3→2→1</div>
+      <div class="card-desc" style="color:#854F0B">Maintain Core Strength ทุกวัน, ลด Volume เวทแต่คง Intensity, สัปดาห์สุดท้ายไม่ต้องยกเวทหนัก — เน้น Core เบาๆ รักษาความแข็งแรงไว้</div>
+    </div>
+  </div>
+
+  <div id="muscles" style="display:none">
+    <div class="sec-title" style="margin-bottom:10px"><span class="dot"></span>กลุ่มกล้ามเนื้อที่ขับเคลื่อนการวิ่ง (ตามที่ อ.เอกวิทย์ระบุ)</div>
+
+    <div class="card">
+      <div class="card-head"><span class="card-title">ด้านหลัง — ชุดหลักขับเคลื่อน</span><span class="badge bg">Most Important</span></div>
+      <div class="card-desc">กล้ามเนื้อก้น (Gluteus) • แฮมสตริงท่อนบน (ใต้ก้น) • แฮมสตริงท่อนล่าง (เกาะเข่า) • น่อง Gastrocnemius • น่อง Soleus • เอ็นร้อยหวาย (Achilles Tendon)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="card-title">ด้านหน้า — ประคองและยกเข่า</span><span class="badge bb">Support</span></div>
+      <div class="card-desc">Hip Flexor (ยกเข่า) • Quad ท่อนบน (ช่วยยก) • Quad ท่อนล่าง/กลาง (รับแรงกระแทก) • สันหน้าแข้ง Tibialis Anterior (รับแรงตอนเท้าลงพื้น)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="card-title">Core + ด้านข้าง — Stability</span><span class="badge bp">Stability</span></div>
+      <div class="card-desc">กล้ามเนื้อด้านข้างสะโพก (Glute Med) • กล้ามเนื้อลำตัว Deep Core • ไม่มี Balance ข้าง 2 ข้าง = สาเหตุหลักของการบาดเจ็บ</div>
+    </div>
+
+    <div class="card" style="background:#E1F5EE">
+      <div class="card-head"><span class="card-title" style="color:#0F6E56">Tendon — สำคัญมาก ต้องใจเย็น</span><span class="badge bg">12+ สัปดาห์</span></div>
+      <div class="card-desc" style="color:#0F6E56">เอ็นไม่มีเลือดไปเลี้ยง → ปรับตัวช้ากว่ากล้ามเนื้อมาก ต้องใช้ Isometric + Eccentric ด้วยน้ำหนัก 70–80% ทำช้าๆ ก่อนจะกระโดดหรือ Plyometric — ไม่งั้นเจ็บเอ็นแน่นอน</div>
+    </div>
+
+    <div class="sec-title" style="margin-bottom:10px;margin-top:1rem"><span class="dot"></span>การฝึก Coordination / Neurological</div>
+    <div class="card">
+      <div class="card-desc">อ.เอกวิทย์เน้นมากว่า "ความเร็วไม่ได้อยู่ที่กล้ามเนื้ออย่างเดียว มันอยู่ที่ระบบประสาทสั่งการ" → ฝึก Coordination ด้วย Running Drills, Bird Dog, Dead Bug, A-Skip, High Knee Drill เพื่อให้ Myelin หนาขึ้นและประสาทส่งสัญญาณเร็วขึ้น</div>
+    </div>
+  </div>
+
+  <div id="tips" style="display:none">
+    <div class="tip-box">
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">ฟอร์มก่อนน้ำหนักเสมอ</b> — ถ้า Movement ยังไม่ถูก การเพิ่มน้ำหนักทำให้กล้ามเนื้อมัดอื่นมา Compensate แทน ไม่ได้ฝึกมัดที่ต้องการ</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">Single Leg สำคัญที่สุดสำหรับนักวิ่งถนน</b> — ไม่มีนักวิ่งคนไหนวิ่ง 2 ขาพร้อมกัน ให้ตรวจสอบว่าขาซ้าย-ขวากระโดดได้ไกลเท่ากันหรือเปล่า</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">Core Strength ทำได้ทุกวัน</b> — อ.เอกวิทย์บอกว่ากล้ามเนื้อแกนกลางฟื้นตัวเร็วกว่ามัดอื่น เพราะมันทำงานตลอดเวลาอยู่แล้ว</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">เนินต้องไม่เกิน 7% ความชัน</b> — ถ้าวิ่งไม่ได้ แปลว่าชันเกินไปแล้ว ไม่ใช่ Specific สำหรับนักวิ่งถนน</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">Relative Strength ดีก่อน</b> — น้ำหนักที่ยกได้ ÷ น้ำหนักตัว ยิ่งมากยิ่งดี ที่ 107 กก. ต้องยกได้มากกว่าค่าเฉลี่ยเพื่อชดเชยน้ำหนักตัว</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">ดอม 3 สัปดาห์แรกเป็นปกติ</b> — อย่าหยุด ถ้าหยุดและกลับมาก็ดอมใหม่ เพราะขาดความต่อเนื่อง</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">Tendon ต้องใจเย็น 12+ สัปดาห์</b> — เอ็นร้อยหวายต้องใช้ Isometric + Eccentric ก่อน Plyometric ไม่งั้นเจ็บ Achilles แน่นอน</span></div>
+      <div class="tip"><span class="ti">★</span><span><b style="font-weight:500">ช่วง Taper ลด Volume ไม่ใช่หยุด</b> — ลดเซต 5→3→2→1 แต่ยัง Maintain Core ถึงสัปดาห์แข่ง เพื่อรักษาฐานความแข็งแรงไม่ให้หายไป</span></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:#E1F5EE;border-radius:var(--border-radius-md)">
+      <p style="font-size:12px;color:#0F6E56;font-weight:500">สำหรับคุณที่น้ำหนัก 107 กก. อายุ 40 ปี</p>
+      <p style="font-size:12px;color:#0F6E56;margin-top:4px">ลำดับความสำคัญ: เอ็น & ข้อต่อก่อน → Core → Single Leg Control → Power เพราะน้ำหนักตัวสูงทำให้แรงกระแทกต่อเอ็นและข้อสูงมาก อย่าเร่ง Plyometric ก่อนที่ฐาน Tendon จะแข็งแรง (ต้องรอ 12+ สัปดาห์)</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id){
+  ['phase','base','specific','muscles','tips'].forEach(t=>{
+    document.getElementById(t).style.display = t===id?'block':'none';
+  });
+  document.querySelectorAll('.tab').forEach((b,i)=>{
+    const ids=['phase','base','specific','muscles','tips'];
+    b.className='tab'+(ids[i]===id?' on':'');
+  });
+}
+</script>
